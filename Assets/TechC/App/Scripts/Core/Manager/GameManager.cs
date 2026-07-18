@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ProjectName.Core.Manager
+namespace TechC.Core.Manager
 {
     /// <summary>
     /// ゲーム全体を管理するSingleton。

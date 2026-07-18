@@ -1,4 +1,4 @@
-namespace ProjectName.InGame.Events
+namespace TechC.InGame.Events
 {
     // ここにゲーム内のイベントを定義する    
 }

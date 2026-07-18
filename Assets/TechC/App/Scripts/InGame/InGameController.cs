@@ -1,7 +1,7 @@
 using UnityEngine;
-using ProjectName.Audio;
+using TechC.Audio;
 
-namespace ProjectName.InGame
+namespace TechC.InGame
 {
     /// <summary>
     /// InGameシーンの最上位モジュール。

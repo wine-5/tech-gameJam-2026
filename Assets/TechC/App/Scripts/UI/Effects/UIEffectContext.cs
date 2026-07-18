@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ProjectName.UI.Effects
+namespace TechC.UI.Effects
 {
     /// <summary>
     /// エフェクトが操作する対象と初期値をまとめたコンテキスト。

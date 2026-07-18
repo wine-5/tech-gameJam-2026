@@ -3,7 +3,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace ProjectName.UI.Effects
+namespace TechC.UI.Effects
 {
     /// <summary>
     /// sin波でアルファの点滅を繰り返すエフェクト。

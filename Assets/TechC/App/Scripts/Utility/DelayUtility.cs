@@ -3,7 +3,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace ProjectName.Core.Util
+namespace TechC.Core.Util
 {
     /// <summary>
     /// UniTask を使った遅延・繰り返し処理。

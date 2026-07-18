@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ProjectName.Core.Pause
+namespace TechC.Core.Pause
 {
-    using ProjectName;
+    using TechC;
 
     /// <summary>
     /// ポーズ状態に合わせて、登録された IPauseFreezable をまとめて停止・再開するコンポーネント。

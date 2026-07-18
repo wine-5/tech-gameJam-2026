@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
-using ProjectName.Core.Log;
+using TechC.Core.Log;
 
-namespace ProjectName.Editor
+namespace TechC.Editor
 {
     /// <summary>
     /// CusLog設定を編集するためのEditorWindow

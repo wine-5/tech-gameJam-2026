@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using ProjectName.Core.Manager;
-using ProjectName.Core.Log;
+using TechC.Core.Manager;
+using TechC.Core.Log;
 
-namespace ProjectName.Core.InputControl
+namespace TechC.Core.InputControl
 {
     /// <summary>
     /// Pause入力を受け取り、PauseManager のトグルを呼ぶだけのクラス

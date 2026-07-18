@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ProjectName.Core.Log
+namespace TechC.Core.Log
 {
     /// <summary>
     /// ログカテゴリの設定データ

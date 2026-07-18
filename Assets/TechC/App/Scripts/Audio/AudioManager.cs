@@ -2,10 +2,10 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using ProjectName.Core.Manager;
-using ProjectName.Core.Log;
+using TechC.Core.Manager;
+using TechC.Core.Log;
 
-namespace ProjectName.Audio
+namespace TechC.Audio
 {
     /// <summary>
     /// オーディオ管理システム

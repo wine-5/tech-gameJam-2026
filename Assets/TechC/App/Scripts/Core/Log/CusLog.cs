@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Diagnostics;
 
-namespace ProjectName.Core.Log
+namespace TechC.Core.Log
 {
     /// <summary>
     /// カスタムロガーシステム

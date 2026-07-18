@@ -4,14 +4,14 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-namespace ProjectName.Editor
+namespace TechC.Editor
 {
     /// <summary>
     /// PauseFreezer のインスペクタ拡張。
     /// [SerializeReference] の List に対し、IPauseFreezable の具象型を
     /// メニューから選んで追加できるようにする。
     /// </summary>
-    [CustomEditor(typeof(ProjectName.Core.Pause.PauseFreezer))]
+    [CustomEditor(typeof(TechC.Core.Pause.PauseFreezer))]
     public class PauseFreezerEditor : UnityEditor.Editor
     {
         private SerializedProperty freezablesProperty;
@@ -94,7 +94,7 @@ namespace ProjectName.Editor
 
         private void ShowTypeSelectMenu(int elementIndex)
         {
-            var pauseFreezableType = System.Type.GetType("ProjectName.Core.Pause.IPauseFreezable, Assembly-CSharp");
+            var pauseFreezableType = System.Type.GetType("TechC.Core.Pause.IPauseFreezable, Assembly-CSharp");
             if (pauseFreezableType == null)
             {
                 EditorUtility.DisplayDialog("Error", "IPauseFreezable が見つかりません", "OK");

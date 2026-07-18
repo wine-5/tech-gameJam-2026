@@ -3,7 +3,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace ProjectName.UI.Effects
+namespace TechC.UI.Effects
 {
     /// <summary>
     /// 指定倍率まで拡大（縮小）するエフェクト。

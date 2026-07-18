@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ProjectName.Audio
+namespace TechC.Audio
 {
     /// <summary>
     /// BGMオーディオデータ

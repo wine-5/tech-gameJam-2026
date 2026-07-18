@@ -1,4 +1,4 @@
-namespace ProjectName.Core.Pause
+namespace TechC.Core.Pause
 {
     /// <summary>
     /// ポーズ状態に合わせて凍結する対象の共通契約。

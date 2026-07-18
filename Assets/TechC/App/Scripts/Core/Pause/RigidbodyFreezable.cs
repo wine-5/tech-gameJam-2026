@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace ProjectName.Core.Pause
+namespace TechC.Core.Pause
 {
     /// <summary>
     /// Rigidbody2D の物理シミュレーションを停止/再開する凍結部品。

@@ -1,11 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
-using ProjectName.Audio;
-using ProjectName.Core.Log;
-using ProjectName.Core.Manager;
-using ProjectName.Scene.Manager;
+using TechC.Audio;
+using TechC.Core.Log;
+using TechC.Core.Manager;
+using TechC.Scene.Manager;
 
-namespace ProjectName.Title
+namespace TechC.Title
 {
     /// <summary>
     /// Titleシーンの最上位モジュール。

@@ -1,7 +1,7 @@
 using UnityEngine;
-using ProjectName.Audio;
+using TechC.Audio;
 
-namespace ProjectName.Result
+namespace TechC.Result
 {
     /// <summary>
     /// Resultシーンの最上位モジュール。

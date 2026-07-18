@@ -1,7 +1,7 @@
 using UnityEngine;
-using ProjectName.Core.Log;
+using TechC.Core.Log;
 
-namespace ProjectName.Core.Manager
+namespace TechC.Core.Manager
 {
     /// <summary>
     /// シングルトンパターンの基底クラス

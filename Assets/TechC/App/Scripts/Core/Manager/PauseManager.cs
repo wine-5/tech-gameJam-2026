@@ -1,11 +1,11 @@
 using System;
 using UnityEngine;
-using ProjectName.Core.Manager;
-using ProjectName.Core.Log;
-using ProjectName.InGame.UI;
-using ProjectName.Scene.Manager;
+using TechC.Core.Manager;
+using TechC.Core.Log;
+using TechC.InGame.UI;
+using TechC.Scene.Manager;
 
-namespace ProjectName
+namespace TechC
 {
     /// <summary>
     /// ゲーム全体のPause状態を管理するシングルトン

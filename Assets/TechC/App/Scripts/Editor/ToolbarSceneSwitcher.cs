@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-namespace ProjectName.Editor
+namespace TechC.Editor
 {
     [InitializeOnLoad]
     public static class SceneDropdownToolbar
@@ -181,8 +181,8 @@ namespace ProjectName.Editor
         /// </summary>
         private static void LoadScenes()
         {
-            var productionGuids = AssetDatabase.FindAssets("t:Scene", new[] { "Assets/ProjectName/App/Scenes/Production" });
-            var workspaceGuids = AssetDatabase.FindAssets("t:Scene", new[] { "Assets/ProjectName/App/Scenes/Workspace" });
+            var productionGuids = AssetDatabase.FindAssets("t:Scene", new[] { "Assets/TechC/App/Scenes/Production" });
+            var workspaceGuids = AssetDatabase.FindAssets("t:Scene", new[] { "Assets/TechC/App/Scenes/Workspace" });
             
             var allGuids = productionGuids.Concat(workspaceGuids).ToArray();
             _scenePaths = allGuids.Select(g => AssetDatabase.GUIDToAssetPath(g))

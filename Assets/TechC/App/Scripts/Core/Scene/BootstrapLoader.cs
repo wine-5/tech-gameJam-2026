@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace ProjectName.Core.Scene
+namespace TechC.Core.Scene
 {
     /// <summary>
     /// どのシーンから開始しても必要なManagerシーンを自動的にロードするBootstrap

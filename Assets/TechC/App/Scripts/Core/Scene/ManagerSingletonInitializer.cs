@@ -1,10 +1,10 @@
 using UnityEngine;
-using ProjectName.Scene.Manager;
-using ProjectName.Audio;
-using ProjectName.Core.Manager;
-using ProjectName;
+using TechC.Scene.Manager;
+using TechC.Audio;
+using TechC.Core.Manager;
+using TechC;
 
-namespace ProjectName.Core.Scene
+namespace TechC.Core.Scene
 {
     /// <summary>
     /// ManagerSceneでのSingleton初期化順序を管理

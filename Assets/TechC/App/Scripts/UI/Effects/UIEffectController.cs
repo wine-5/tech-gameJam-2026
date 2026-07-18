@@ -4,7 +4,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace ProjectName.UI.Effects
+namespace TechC.UI.Effects
 {
     /// <summary>
     /// 登録された UIEffectBase をトリガー種別ごとにまとめて再生するコンポーネント。

@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEditor;
 using System.IO;
 using System.Text.RegularExpressions;
-using ProjectName.Core.Log;
+using TechC.Core.Log;
 
 namespace ProjectName.Editor
 {
@@ -162,7 +162,7 @@ namespace ProjectName.Editor
 
         private void RenameProjectFolder()
         {
-            string oldPath = "Assets/ProjectName";
+            string oldPath = "Assets/TechC";
             string newPath = $"Assets/{_newProjectName}";
 
             // 同じ名前の場合は処理をスキップ

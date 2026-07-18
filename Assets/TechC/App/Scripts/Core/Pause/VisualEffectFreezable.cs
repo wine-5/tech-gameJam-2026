@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.VFX;
 
-namespace ProjectName.Core.Pause
+namespace TechC.Core.Pause
 {
     /// <summary>
     /// VFX Graph の VisualEffect の再生を停止/再開する凍結部品。

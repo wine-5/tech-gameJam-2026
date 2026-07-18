@@ -1,4 +1,4 @@
-namespace ProjectName.Core.Events
+namespace TechC.Core.Events
 {
     /// <summary>
     /// ゲームイベントのマーカーインターフェース

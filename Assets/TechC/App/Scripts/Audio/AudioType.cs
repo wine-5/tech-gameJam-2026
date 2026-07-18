@@ -1,4 +1,4 @@
-namespace ProjectName.Audio
+namespace TechC.Audio
 {
     /// <summary>オーディオの種類</summary>
     public enum AudioType

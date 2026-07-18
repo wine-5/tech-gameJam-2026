@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
-using ProjectName.Core.Manager;
-using ProjectName.Core.Extentions;
+using TechC.Core.Manager;
+using TechC.Core.Extentions;
 
-namespace ProjectName.InGame.UI
+namespace TechC.InGame.UI
 {
     public enum PauseMenuButton
     {

@@ -1,11 +1,11 @@
 #if UNITY_EDITOR
 using System;
 using System.Linq;
-using ProjectName.UI.Effects;
+using TechC.UI.Effects;
 using UnityEditor;
 using UnityEngine;
 
-namespace ProjectName.Editor
+namespace TechC.Editor
 {
     /// <summary>
     /// UIEffectController のインスペクタ拡張。

@@ -3,7 +3,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ProjectName.Core.Manager
+namespace TechC.Core.Manager
 {
     /// <summary>
     /// シーン遷移用のフェードオーバーレイを管理するSingleton。

@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using ProjectName.Core.Log;
+using TechC.Core.Log;
 
-namespace ProjectName.Core.Events
+namespace TechC.Core.Events
 {
     /// <summary>
     /// 型安全なイベントバスシステム

@@ -1,8 +1,8 @@
 using Cysharp.Threading.Tasks;
-using ProjectName.Scene.Manager;
+using TechC.Scene.Manager;
 using UnityEngine;
 
-namespace ProjectName.UI
+namespace TechC.UI
 {
     /// <summary>
     /// ButtonのOnClickからシーンを変更するためのラッパークラス

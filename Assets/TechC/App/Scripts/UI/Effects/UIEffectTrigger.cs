@@ -1,4 +1,4 @@
-namespace ProjectName.UI.Effects
+namespace TechC.UI.Effects
 {
     /// <summary>
     /// UIエフェクトをいつ再生するかの指定

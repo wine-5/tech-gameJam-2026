@@ -1,9 +1,9 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using ProjectName.Core.Util;
+using TechC.Core.Util;
 using UnityEngine;
 
-namespace ProjectName.Core.Extentions
+namespace TechC.Core.Extentions
 {
     /// <summary>
     /// CanvasGroup に関する拡張メソッドを提供するクラス

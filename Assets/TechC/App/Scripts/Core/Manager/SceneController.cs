@@ -1,10 +1,10 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using ProjectName.Core.Manager;
-using ProjectName.Core.Log;
+using TechC.Core.Manager;
+using TechC.Core.Log;
 
-namespace ProjectName.Scene.Manager
+namespace TechC.Scene.Manager
 {
     /// <summary>
     /// ゲーム内のシーン名を定義するenum

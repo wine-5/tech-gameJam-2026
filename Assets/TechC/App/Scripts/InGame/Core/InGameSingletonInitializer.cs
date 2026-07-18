@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ProjectName.InGame.Core
+namespace TechC.InGame.Core
 {
     /// <summary>
     /// InGameシーンのSingleton初期化順序を管理
