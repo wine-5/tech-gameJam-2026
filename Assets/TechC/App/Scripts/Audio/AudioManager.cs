@@ -97,7 +97,7 @@ namespace TechC.Audio
             {
                 _bgmFadeCts?.Cancel();
                 _bgmFadeCts = new CancellationTokenSource();
-                FadeBGM(bgmData, fadeTime, _bgmFadeCts.Token).Forget();
+                FadeBGMAsync(bgmData, fadeTime, _bgmFadeCts.Token).Forget();
             }
             else
                 PlayBGMInternal(bgmData);
@@ -105,19 +105,19 @@ namespace TechC.Audio
 
         private void PlayBGMInternal(BGMAudioData bgmData)
         {
-            _bgmSource.clip = bgmData.clip;
-            _bgmSource.volume = bgmData.volume * _bgmVolume * _masterVolume;
-            _bgmSource.pitch = bgmData.pitch;
+            _bgmSource.clip = bgmData.Clip;
+            _bgmSource.volume = bgmData.Volume * _bgmVolume * _masterVolume;
+            _bgmSource.pitch = bgmData.Pitch;
             _bgmSource.loop = true;
             _bgmSource.Play();
 
-            _currentBGMType = bgmData.bgmType;
+            _currentBGMType = bgmData.BgmType;
             _isBGMPaused = false;
 
-            CusLog.Log("AudioManager", $"BGM '{bgmData.bgmType}' を再生しました");
+            CusLog.Log("AudioManager", $"BGM '{bgmData.BgmType}' を再生しました");
         }
 
-        private async UniTask FadeBGM(BGMAudioData newBGM, float fadeTime, CancellationToken ct)
+        private async UniTask FadeBGMAsync(BGMAudioData newBGM, float fadeTime, CancellationToken ct)
         {
             float startVolume = _bgmSource.volume;
 
@@ -129,13 +129,13 @@ namespace TechC.Audio
                 await UniTask.Yield(ct);
             }
 
-            _bgmSource.clip = newBGM.clip;
-            _bgmSource.pitch = newBGM.pitch;
+            _bgmSource.clip = newBGM.Clip;
+            _bgmSource.pitch = newBGM.Pitch;
             _bgmSource.Play();
-            _currentBGMType = newBGM.bgmType;
+            _currentBGMType = newBGM.BgmType;
 
             elapsed = 0f;
-            float targetVolume = newBGM.volume * _bgmVolume * _masterVolume;
+            float targetVolume = newBGM.Volume * _bgmVolume * _masterVolume;
             while (elapsed < fadeTime / 2f)
             {
                 elapsed += Time.deltaTime;
@@ -145,7 +145,7 @@ namespace TechC.Audio
 
             _bgmSource.volume = targetVolume;
 
-            CusLog.Log("AudioManager", $"BGM '{newBGM.bgmType}' をフェードイン再生しました");
+            CusLog.Log("AudioManager", $"BGM '{newBGM.BgmType}' をフェードイン再生しました");
         }
 
         /// <summary>
@@ -160,7 +160,7 @@ namespace TechC.Audio
             {
                 _bgmFadeCts?.Cancel();
                 _bgmFadeCts = new CancellationTokenSource();
-                FadeOutBGM(fadeTime, _bgmFadeCts.Token).Forget();
+                FadeOutBGMAsync(fadeTime, _bgmFadeCts.Token).Forget();
             }
             else
             {
@@ -170,7 +170,7 @@ namespace TechC.Audio
             }
         }
 
-        private async UniTask FadeOutBGM(float fadeTime, CancellationToken ct)
+        private async UniTask FadeOutBGMAsync(float fadeTime, CancellationToken ct)
         {
             float startVolume = _bgmSource.volume;
             float elapsed = 0f;
@@ -254,14 +254,14 @@ namespace TechC.Audio
         {
             AudioSource seSource = GetAvailableSESource();
 
-            seSource.clip = seData.clip;
-            seSource.volume = seData.volume * _seVolume * _masterVolume;
-            seSource.pitch = pitch != 1f ? pitch : seData.pitch;
-            seSource.loop = loop || seData.loop;
-            seSource.spatialBlend = seData.spatialBlend;
+            seSource.clip = seData.Clip;
+            seSource.volume = seData.Volume * _seVolume * _masterVolume;
+            seSource.pitch = pitch != 1f ? pitch : seData.Pitch;
+            seSource.loop = loop || seData.Loop;
+            seSource.spatialBlend = seData.SpatialBlend;
             seSource.Play();
 
-            CusLog.Log("AudioManager", $"SE '{seData.seType}' を再生しました");
+            CusLog.Log("AudioManager", $"SE '{seData.SeType}' を再生しました");
         }
 
         /// <summary>
@@ -280,15 +280,15 @@ namespace TechC.Audio
             tempGO.transform.position = position;
             AudioSource tempSource = tempGO.AddComponent<AudioSource>();
 
-            tempSource.clip = seData.clip;
-            tempSource.volume = seData.volume * _seVolume * _masterVolume;
-            tempSource.pitch = pitch != 1f ? pitch : seData.pitch;
+            tempSource.clip = seData.Clip;
+            tempSource.volume = seData.Volume * _seVolume * _masterVolume;
+            tempSource.pitch = pitch != 1f ? pitch : seData.Pitch;
             tempSource.spatialBlend = 1f;
             tempSource.Play();
 
-            Destroy(tempGO, seData.clip.length);
+            Destroy(tempGO, seData.Clip.length);
 
-            CusLog.Log("AudioManager", $"SE '{seData.seType}' を3D再生しました");
+            CusLog.Log("AudioManager", $"SE '{seData.SeType}' を3D再生しました");
         }
 
         private AudioSource GetAvailableSESource()
@@ -388,7 +388,7 @@ namespace TechC.Audio
 
             BGMAudioData bgmData = _audioDatabase.GetBGMData(_currentBGMType.Value);
             if (bgmData != null)
-                _bgmSource.volume = bgmData.volume * _bgmVolume * _masterVolume;
+                _bgmSource.volume = bgmData.Volume * _bgmVolume * _masterVolume;
         }
 
         /// <summary>

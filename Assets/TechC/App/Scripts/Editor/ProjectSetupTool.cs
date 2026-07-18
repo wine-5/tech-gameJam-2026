@@ -4,7 +4,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 using TechC.Core.Log;
 
-namespace ProjectName.Editor
+namespace TechC.Editor
 {
 
     public class ProjectSetupTool : EditorWindow

@@ -177,7 +177,7 @@ namespace TechC.Editor
         }
 
         /// <summary>
-        /// ProjectNameプロジェクトのシーンを取得
+        /// TechCプロジェクトのシーンを取得
         /// </summary>
         private static void LoadScenes()
         {

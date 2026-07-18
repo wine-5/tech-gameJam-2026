@@ -10,15 +10,15 @@ namespace TechC.Core.Log
     [System.Serializable]
     public class LogCategory
     {
-        public string categoryName;
-        public Color color = Color.white;
-        public bool isEnabled = true;  // カテゴリー別のオン/オフフラグ
+        public string CategoryName;
+        public Color Color = Color.white;
+        public bool IsEnabled = true;  // カテゴリー別のオン/オフフラグ
 
         public LogCategory(string name, Color color, bool enabled = true)
         {
-            this.categoryName = name;
-            this.color = color;
-            this.isEnabled = enabled;
+            this.CategoryName = name;
+            this.Color = color;
+            this.IsEnabled = enabled;
         }
     }
 
@@ -64,42 +64,42 @@ namespace TechC.Core.Log
         /// <summary>
         /// デフォルトカテゴリの初期化
         /// </summary>
-        private const float DEFAULT_PLAYER_COLOR_R = 0.3f;
-        private const float DEFAULT_PLAYER_COLOR_G = 0.7f;
-        private const float DEFAULT_PLAYER_COLOR_B = 1f;
+        private const float DefaultPlayerColorR = 0.3f;
+        private const float DefaultPlayerColorG = 0.7f;
+        private const float DefaultPlayerColorB = 1f;
         
-        private const float DEFAULT_ENEMY_COLOR_R = 1f;
-        private const float DEFAULT_ENEMY_COLOR_G = 0.3f;
-        private const float DEFAULT_ENEMY_COLOR_B = 0.3f;
+        private const float DefaultEnemyColorR = 1f;
+        private const float DefaultEnemyColorG = 0.3f;
+        private const float DefaultEnemyColorB = 0.3f;
         
-        private const float DEFAULT_UI_COLOR_R = 0.5f;
-        private const float DEFAULT_UI_COLOR_G = 1f;
-        private const float DEFAULT_UI_COLOR_B = 0.5f;
+        private const float DefaultUIColorR = 0.5f;
+        private const float DefaultUIColorG = 1f;
+        private const float DefaultUIColorB = 0.5f;
         
-        private const float DEFAULT_AUDIO_COLOR_R = 1f;
-        private const float DEFAULT_AUDIO_COLOR_G = 0.8f;
-        private const float DEFAULT_AUDIO_COLOR_B = 0.3f;
+        private const float DefaultAudioColorR = 1f;
+        private const float DefaultAudioColorG = 0.8f;
+        private const float DefaultAudioColorB = 0.3f;
         
-        private const float DEFAULT_NETWORK_COLOR_R = 1f;
-        private const float DEFAULT_NETWORK_COLOR_G = 0.5f;
-        private const float DEFAULT_NETWORK_COLOR_B = 1f;
+        private const float DefaultNetworkColorR = 1f;
+        private const float DefaultNetworkColorG = 0.5f;
+        private const float DefaultNetworkColorB = 1f;
         
-        private const float DEFAULT_SYSTEM_COLOR_R = 0.8f;
-        private const float DEFAULT_SYSTEM_COLOR_G = 0.8f;
-        private const float DEFAULT_SYSTEM_COLOR_B = 0.8f;
+        private const float DefaultSystemColorR = 0.8f;
+        private const float DefaultSystemColorG = 0.8f;
+        private const float DefaultSystemColorB = 0.8f;
         
-        private const int HEX_COLOR_MAX_VALUE = 255;
+        private const int HexColorMaxValue = 255;
 
         private void InitializeDefaultCategories()
         {
             _categories = new List<LogCategory>
             {
-                new LogCategory("Player", new Color(DEFAULT_PLAYER_COLOR_R, DEFAULT_PLAYER_COLOR_G, DEFAULT_PLAYER_COLOR_B)),      // 水色
-                new LogCategory("Enemy", new Color(DEFAULT_ENEMY_COLOR_R, DEFAULT_ENEMY_COLOR_G, DEFAULT_ENEMY_COLOR_B)),        // 赤
-                new LogCategory("UI", new Color(DEFAULT_UI_COLOR_R, DEFAULT_UI_COLOR_G, DEFAULT_UI_COLOR_B)),           // 緑
-                new LogCategory("Audio", new Color(DEFAULT_AUDIO_COLOR_R, DEFAULT_AUDIO_COLOR_G, DEFAULT_AUDIO_COLOR_B)),        // オレンジ
-                new LogCategory("Network", new Color(DEFAULT_NETWORK_COLOR_R, DEFAULT_NETWORK_COLOR_G, DEFAULT_NETWORK_COLOR_B)),        // ピンク
-                new LogCategory("System", new Color(DEFAULT_SYSTEM_COLOR_R, DEFAULT_SYSTEM_COLOR_G, DEFAULT_SYSTEM_COLOR_B)),     // グレー
+                new LogCategory("Player", new Color(DefaultPlayerColorR, DefaultPlayerColorG, DefaultPlayerColorB)),      // 水色
+                new LogCategory("Enemy", new Color(DefaultEnemyColorR, DefaultEnemyColorG, DefaultEnemyColorB)),        // 赤
+                new LogCategory("UI", new Color(DefaultUIColorR, DefaultUIColorG, DefaultUIColorB)),           // 緑
+                new LogCategory("Audio", new Color(DefaultAudioColorR, DefaultAudioColorG, DefaultAudioColorB)),        // オレンジ
+                new LogCategory("Network", new Color(DefaultNetworkColorR, DefaultNetworkColorG, DefaultNetworkColorB)),        // ピンク
+                new LogCategory("System", new Color(DefaultSystemColorR, DefaultSystemColorG, DefaultSystemColorB)),     // グレー
             };
         }
 
@@ -108,10 +108,10 @@ namespace TechC.Core.Log
         /// </summary>
         public string GetCategoryColor(string categoryName)
         {
-            var category = _categories.FirstOrDefault(c => c.categoryName == categoryName);
+            var category = _categories.FirstOrDefault(c => c.CategoryName == categoryName);
             if (category != null)
             {
-                return ColorToHex(category.color);
+                return ColorToHex(category.Color);
             }
             
             // 未登録のカテゴリは白色
@@ -123,8 +123,8 @@ namespace TechC.Core.Log
         /// </summary>
         public bool IsCategoryEnabled(string categoryName)
         {
-            var category = _categories.FirstOrDefault(c => c.categoryName == categoryName);
-            return category?.isEnabled ?? true; // 未登録のカテゴリはデフォルトで有効
+            var category = _categories.FirstOrDefault(c => c.CategoryName == categoryName);
+            return category?.IsEnabled ?? true; // 未登録のカテゴリはデフォルトで有効
         }
 
         /// <summary>
@@ -132,10 +132,10 @@ namespace TechC.Core.Log
         /// </summary>
         public void SetCategoryEnabled(string categoryName, bool enabled)
         {
-            var category = _categories.FirstOrDefault(c => c.categoryName == categoryName);
+            var category = _categories.FirstOrDefault(c => c.CategoryName == categoryName);
             if (category != null)
             {
-                category.isEnabled = enabled;
+                category.IsEnabled = enabled;
 #if UNITY_EDITOR
                 UnityEditor.EditorUtility.SetDirty(this);
 #endif
@@ -147,7 +147,7 @@ namespace TechC.Core.Log
         /// </summary>
         public void AddCategory(string categoryName, Color color)
         {
-            if (!_categories.Any(c => c.categoryName == categoryName))
+            if (!_categories.Any(c => c.CategoryName == categoryName))
                 _categories.Add(new LogCategory(categoryName, color));
         }
 
@@ -156,7 +156,7 @@ namespace TechC.Core.Log
         /// </summary>
         public void RemoveCategory(string categoryName)
         {
-            _categories.RemoveAll(c => c.categoryName == categoryName);
+            _categories.RemoveAll(c => c.CategoryName == categoryName);
         }
 
         /// <summary>
@@ -164,9 +164,9 @@ namespace TechC.Core.Log
         /// </summary>
         private string ColorToHex(Color color)
         {
-            int r = Mathf.RoundToInt(color.r * HEX_COLOR_MAX_VALUE);
-            int g = Mathf.RoundToInt(color.g * HEX_COLOR_MAX_VALUE);
-            int b = Mathf.RoundToInt(color.b * HEX_COLOR_MAX_VALUE);
+            int r = Mathf.RoundToInt(color.r * HexColorMaxValue);
+            int g = Mathf.RoundToInt(color.g * HexColorMaxValue);
+            int b = Mathf.RoundToInt(color.b * HexColorMaxValue);
             return $"#{r:X2}{g:X2}{b:X2}";
         }
     }

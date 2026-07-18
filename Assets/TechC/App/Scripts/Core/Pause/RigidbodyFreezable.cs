@@ -9,18 +9,18 @@ namespace TechC.Core.Pause
     [Serializable]
     public class RigidbodyFreezable : IPauseFreezable
     {
-        [SerializeField] private Rigidbody2D body;
+        [SerializeField] private Rigidbody2D _body;
 
         public void OnFreeze()
         {
-            if (body != null)
-                body.simulated = false;
+            if (_body != null)
+                _body.simulated = false;
         }
 
         public void OnUnfreeze()
         {
-            if (body != null)
-                body.simulated = true;
+            if (_body != null)
+                _body.simulated = true;
         }
     }
 }

@@ -10,18 +10,18 @@ namespace TechC.Core.Pause
     [Serializable]
     public class VisualEffectFreezable : IPauseFreezable
     {
-        [SerializeField] private VisualEffect visualEffect;
+        [SerializeField] private VisualEffect _visualEffect;
 
         public void OnFreeze()
         {
-            if (visualEffect != null)
-                visualEffect.pause = true;
+            if (_visualEffect != null)
+                _visualEffect.pause = true;
         }
 
         public void OnUnfreeze()
         {
-            if (visualEffect != null)
-                visualEffect.pause = false;
+            if (_visualEffect != null)
+                _visualEffect.pause = false;
         }
     }
 }

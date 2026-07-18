@@ -12,27 +12,27 @@ namespace TechC.Core.InputControl
     /// </summary>
     public class PauseInputHandler : MonoBehaviour
     {
-        [SerializeField] private InputActionReference pauseAction;
+        [SerializeField] private InputActionReference _pauseAction;
 
         private void OnEnable()
         {
-            if (pauseAction == null)
+            if (_pauseAction == null)
             {
                 CusLog.Warning("PauseInputHandler", "pauseAction が未設定です");
                 return;
             }
 
-            pauseAction.action.performed += OnPausePerformed;
-            pauseAction.action.Enable();
+            _pauseAction.action.performed += OnPausePerformed;
+            _pauseAction.action.Enable();
         }
 
         private void OnDisable()
         {
-            if (pauseAction == null)
+            if (_pauseAction == null)
                 return;
 
-            pauseAction.action.performed -= OnPausePerformed;
-            pauseAction.action.Disable();
+            _pauseAction.action.performed -= OnPausePerformed;
+            _pauseAction.action.Disable();
         }
 
         /// <summary>

@@ -12,7 +12,7 @@ namespace TechC.Core.Pause
     /// </summary>
     public class PauseFreezer : MonoBehaviour
     {
-        [SerializeReference] private List<IPauseFreezable> freezables = new();
+        [SerializeReference] private List<IPauseFreezable> _freezables = new();
 
         private void OnEnable()
         {
@@ -39,13 +39,13 @@ namespace TechC.Core.Pause
 
         private void Freeze()
         {
-            foreach (var freezable in freezables)
+            foreach (var freezable in _freezables)
                 freezable.OnFreeze();
         }
 
         private void Unfreeze()
         {
-            foreach (var freezable in freezables)
+            foreach (var freezable in _freezables)
                 freezable.OnUnfreeze();
         }
     }

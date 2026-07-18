@@ -16,11 +16,11 @@ namespace TechC.Editor
     [CustomEditor(typeof(UIEffectController))]
     public class UIEffectControllerEditor : UnityEditor.Editor
     {
-        private SerializedProperty effectsProperty;
+        private SerializedProperty _effectsProperty;
 
         private void OnEnable()
         {
-            effectsProperty = serializedObject.FindProperty("_effects");
+            _effectsProperty = serializedObject.FindProperty("_effects");
         }
 
         public override void OnInspectorGUI()
@@ -30,15 +30,15 @@ namespace TechC.Editor
             EditorGUILayout.LabelField("Effects", EditorStyles.boldLabel);
             EditorGUILayout.Space(4);
 
-            if (effectsProperty == null)
+            if (_effectsProperty == null)
             {
                 EditorGUILayout.HelpBox("_effects プロパティが見つかりません", MessageType.Error);
                 return;
             }
 
-            for (int i = 0; i < effectsProperty.arraySize; i++)
+            for (int i = 0; i < _effectsProperty.arraySize; i++)
             {
-                var element = effectsProperty.GetArrayElementAtIndex(i);
+                var element = _effectsProperty.GetArrayElementAtIndex(i);
                 string typeName = element.managedReferenceValue?.GetType().Name ?? "None";
 
                 EditorGUILayout.BeginVertical(EditorStyles.helpBox);
@@ -54,7 +54,7 @@ namespace TechC.Editor
 
                 if (GUILayout.Button("－", GUILayout.Width(24)))
                 {
-                    effectsProperty.DeleteArrayElementAtIndex(i);
+                    _effectsProperty.DeleteArrayElementAtIndex(i);
                     serializedObject.ApplyModifiedProperties();
                     EditorGUILayout.EndHorizontal();
                     EditorGUILayout.EndVertical();
@@ -113,9 +113,9 @@ namespace TechC.Editor
 
         private void ChangeEffectType(int index, Type type)
         {
-            if (index >= 0 && index < effectsProperty.arraySize)
+            if (index >= 0 && index < _effectsProperty.arraySize)
             {
-                var element = effectsProperty.GetArrayElementAtIndex(index);
+                var element = _effectsProperty.GetArrayElementAtIndex(index);
                 element.managedReferenceValue = Activator.CreateInstance(type);
                 element.isExpanded = true;
                 serializedObject.ApplyModifiedProperties();
@@ -125,9 +125,9 @@ namespace TechC.Editor
         private void AddEffect(Type type)
         {
             serializedObject.Update();
-            int index = effectsProperty.arraySize;
-            effectsProperty.arraySize++;
-            var element = effectsProperty.GetArrayElementAtIndex(index);
+            int index = _effectsProperty.arraySize;
+            _effectsProperty.arraySize++;
+            var element = _effectsProperty.GetArrayElementAtIndex(index);
             element.managedReferenceValue = Activator.CreateInstance(type);
             element.isExpanded = true;
             serializedObject.ApplyModifiedProperties();

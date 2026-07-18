@@ -19,14 +19,14 @@ namespace TechC.InGame.UI
     {
         public event System.Action<PauseMenuButton> OnButtonClicked;
 
-        [SerializeField] private CanvasGroup canvasGroup;
-        [SerializeField] private Button backInGameButton;
-        [SerializeField] private Button toTitleButton;
+        [SerializeField] private CanvasGroup _canvasGroup;
+        [SerializeField] private Button _backInGameButton;
+        [SerializeField] private Button _toTitleButton;
 
         private void Awake()
         {
             // 初期状態は非表示
-            canvasGroup.Hide();
+            _canvasGroup.Hide();
         }
 
         /// <summary>
@@ -42,11 +42,11 @@ namespace TechC.InGame.UI
             PauseManager.I.OnResumed += OnPauseEnd;
 
             // ボタンリスナー登録
-            if (backInGameButton != null)
-                backInGameButton.onClick.AddListener(() => OnButtonClicked?.Invoke(PauseMenuButton.BackInGame));
+            if (_backInGameButton != null)
+                _backInGameButton.onClick.AddListener(() => OnButtonClicked?.Invoke(PauseMenuButton.BackInGame));
 
-            if (toTitleButton != null)
-                toTitleButton.onClick.AddListener(() => OnButtonClicked?.Invoke(PauseMenuButton.ToTitle));
+            if (_toTitleButton != null)
+                _toTitleButton.onClick.AddListener(() => OnButtonClicked?.Invoke(PauseMenuButton.ToTitle));
         }
 
         private void OnDisable()
@@ -57,15 +57,15 @@ namespace TechC.InGame.UI
                 PauseManager.I.OnResumed -= OnPauseEnd;
             }
 
-            if (backInGameButton != null)
-                backInGameButton.onClick.RemoveAllListeners();
+            if (_backInGameButton != null)
+                _backInGameButton.onClick.RemoveAllListeners();
 
-            if (toTitleButton != null)
-                toTitleButton.onClick.RemoveAllListeners();
+            if (_toTitleButton != null)
+                _toTitleButton.onClick.RemoveAllListeners();
         }
 
-        private void OnPauseStart() => canvasGroup.Show();
+        private void OnPauseStart() => _canvasGroup.Show();
 
-        private void OnPauseEnd() => canvasGroup.Hide();
+        private void OnPauseEnd() => _canvasGroup.Hide();
     }
 }

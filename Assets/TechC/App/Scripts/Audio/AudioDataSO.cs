@@ -11,16 +11,16 @@ namespace TechC.Audio
     public class BGMAudioData
     {
         [Header("基本設定")]
-        public BGMType bgmType;
-        public AudioClip clip;
+        public BGMType BgmType;
+        public AudioClip Clip;
 
         [Header("音量設定")]
         [Range(0f, 1f)]
-        public float volume = 1f;
+        public float Volume = 1f;
 
         [Header("詳細設定")]
         [Range(-3f, 3f)]
-        public float pitch = 1f;
+        public float Pitch = 1f;
     }
 
     /// <summary>
@@ -30,21 +30,21 @@ namespace TechC.Audio
     public class SEAudioData
     {
         [Header("基本設定")]
-        public SEType seType;
-        public AudioClip clip;
+        public SEType SeType;
+        public AudioClip Clip;
 
         [Header("音量設定")]
         [Range(0f, 1f)]
-        public float volume = 1f;
+        public float Volume = 1f;
 
         [Header("詳細設定")]
-        public bool loop = false;
+        public bool Loop = false;
 
         [Range(-3f, 3f)]
-        public float pitch = 1f;
+        public float Pitch = 1f;
 
         [Range(0f, 1f)]
-        public float spatialBlend = 0f; // 0 = 2D, 1 = 3D
+        public float SpatialBlend = 0f; // 0 = 2D, 1 = 3D
     }
 
     /// <summary>
@@ -74,14 +74,14 @@ namespace TechC.Audio
             {
                 if (bgmData == null)
                     continue;
-                _bgmDictionary[bgmData.bgmType] = bgmData;
+                _bgmDictionary[bgmData.BgmType] = bgmData;
             }
 
             foreach (var seData in _seList)
             {
                 if (seData == null)
                     continue;
-                _seDictionary[seData.seType] = seData;
+                _seDictionary[seData.SeType] = seData;
             }
         }
 
@@ -122,7 +122,7 @@ namespace TechC.Audio
         {
             var bgmDuplicates = _bgmList
                 .Where(data => data != null)
-                .GroupBy(data => data.bgmType)
+                .GroupBy(data => data.BgmType)
                 .Where(g => g.Count() > 1)
                 .Select(g => g.Key)
                 .ToList();
@@ -132,7 +132,7 @@ namespace TechC.Audio
 
             var seDuplicates = _seList
                 .Where(data => data != null)
-                .GroupBy(data => data.seType)
+                .GroupBy(data => data.SeType)
                 .Where(g => g.Count() > 1)
                 .Select(g => g.Key)
                 .ToList();
@@ -141,16 +141,16 @@ namespace TechC.Audio
                 Debug.LogWarning($"[AudioDatabase] 重複するSEが見つかりました: {string.Join(", ", seDuplicates)}");
 
             var emptyBGM = _bgmList
-                .Where(data => data != null && data.clip == null)
-                .Select(data => data.bgmType)
+                .Where(data => data != null && data.Clip == null)
+                .Select(data => data.BgmType)
                 .ToList();
 
             if (emptyBGM.Count > 0)
                 Debug.LogWarning($"[AudioDatabase] AudioClipが設定されていないBGM: {string.Join(", ", emptyBGM)}");
 
             var emptySE = _seList
-                .Where(data => data != null && data.clip == null)
-                .Select(data => data.seType)
+                .Where(data => data != null && data.Clip == null)
+                .Select(data => data.SeType)
                 .ToList();
 
             if (emptySE.Count > 0)

@@ -14,11 +14,11 @@ namespace TechC.Editor
     [CustomEditor(typeof(TechC.Core.Pause.PauseFreezer))]
     public class PauseFreezerEditor : UnityEditor.Editor
     {
-        private SerializedProperty freezablesProperty;
+        private SerializedProperty _freezablesProperty;
 
         private void OnEnable()
         {
-            freezablesProperty = serializedObject.FindProperty("freezables");
+            _freezablesProperty = serializedObject.FindProperty("_freezables");
         }
 
         public override void OnInspectorGUI()
@@ -28,15 +28,15 @@ namespace TechC.Editor
             EditorGUILayout.LabelField("Freezables", EditorStyles.boldLabel);
             EditorGUILayout.Space(4);
 
-            if (freezablesProperty == null)
+            if (_freezablesProperty == null)
             {
                 EditorGUILayout.HelpBox("freezables プロパティが見つかりません", MessageType.Error);
                 return;
             }
 
-            for (int i = 0; i < freezablesProperty.arraySize; i++)
+            for (int i = 0; i < _freezablesProperty.arraySize; i++)
             {
-                var element = freezablesProperty.GetArrayElementAtIndex(i);
+                var element = _freezablesProperty.GetArrayElementAtIndex(i);
                 string typeName = element.managedReferenceValue?.GetType().Name ?? "None";
 
                 EditorGUILayout.BeginVertical(EditorStyles.helpBox);
@@ -52,7 +52,7 @@ namespace TechC.Editor
 
                 if (GUILayout.Button("－", GUILayout.Width(24)))
                 {
-                    freezablesProperty.DeleteArrayElementAtIndex(i);
+                    _freezablesProperty.DeleteArrayElementAtIndex(i);
                     serializedObject.ApplyModifiedProperties();
                     EditorGUILayout.EndHorizontal();
                     EditorGUILayout.EndVertical();
@@ -130,9 +130,9 @@ namespace TechC.Editor
 
         private void ChangeFreezableType(int index, Type type)
         {
-            if (index >= 0 && index < freezablesProperty.arraySize)
+            if (index >= 0 && index < _freezablesProperty.arraySize)
             {
-                var element = freezablesProperty.GetArrayElementAtIndex(index);
+                var element = _freezablesProperty.GetArrayElementAtIndex(index);
                 element.managedReferenceValue = Activator.CreateInstance(type);
                 element.isExpanded = true;
                 serializedObject.ApplyModifiedProperties();
@@ -141,9 +141,9 @@ namespace TechC.Editor
 
         private bool ContainsType(Type type)
         {
-            for (int i = 0; i < freezablesProperty.arraySize; i++)
+            for (int i = 0; i < _freezablesProperty.arraySize; i++)
             {
-                var value = freezablesProperty.GetArrayElementAtIndex(i).managedReferenceValue;
+                var value = _freezablesProperty.GetArrayElementAtIndex(i).managedReferenceValue;
                 if (value != null && value.GetType() == type)
                     return true;
             }
@@ -153,9 +153,9 @@ namespace TechC.Editor
         private void AddFreezable(Type type)
         {
             serializedObject.Update();
-            int index = freezablesProperty.arraySize;
-            freezablesProperty.arraySize++;
-            var element = freezablesProperty.GetArrayElementAtIndex(index);
+            int index = _freezablesProperty.arraySize;
+            _freezablesProperty.arraySize++;
+            var element = _freezablesProperty.GetArrayElementAtIndex(index);
             element.managedReferenceValue = Activator.CreateInstance(type);
             element.isExpanded = true;
             serializedObject.ApplyModifiedProperties();

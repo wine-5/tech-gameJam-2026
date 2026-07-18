@@ -9,18 +9,18 @@ namespace TechC.Core.Pause
     [Serializable]
     public class AnimatorFreezable : IPauseFreezable
     {
-        [SerializeField] private Animator animator;
+        [SerializeField] private Animator _animator;
 
         public void OnFreeze()
         {
-            if (animator != null)
-                animator.speed = 0f;
+            if (_animator != null)
+                _animator.speed = 0f;
         }
 
         public void OnUnfreeze()
         {
-            if (animator != null)
-                animator.speed = 1f;
+            if (_animator != null)
+                _animator.speed = 1f;
         }
     }
 }

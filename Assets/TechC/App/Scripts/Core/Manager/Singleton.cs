@@ -137,12 +137,12 @@ namespace TechC.Core.Manager
         /// <summary>
         /// インスタンスの詳細情報を取得
         /// </summary>
-        private string GetInstanceInfo(T _instance)
+        private string GetInstanceInfo(T instance)
         {
-            if (_instance == null)
+            if (instance == null)
                 return "null";
 
-            var component = _instance as Component;
+            var component = instance as Component;
             if (component == null)
                 return "非MonoBehaviour";
 

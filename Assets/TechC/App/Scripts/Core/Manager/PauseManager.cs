@@ -19,7 +19,7 @@ namespace TechC
         public event Action OnPaused;
         public event Action OnResumed;
 
-        [SerializeField] private PauseMenuView pauseMenuView;
+        [SerializeField] private PauseMenuView _pauseMenuView;
         private bool _isPaused;
 
         public bool IsPaused => _isPaused;
@@ -28,9 +28,9 @@ namespace TechC
         {
             base.OnInitialize();
 
-            if (pauseMenuView != null)
+            if (_pauseMenuView != null)
             {
-                pauseMenuView.Init();
+                _pauseMenuView.Init();
                 SetupMenuView();
             }
         }
@@ -69,8 +69,8 @@ namespace TechC
 
         protected override void OnRelease()
         {
-            if (pauseMenuView != null)
-                pauseMenuView.OnButtonClicked -= HandleMenuButton;
+            if (_pauseMenuView != null)
+                _pauseMenuView.OnButtonClicked -= HandleMenuButton;
 
             OnPaused = null;
             OnResumed = null;
@@ -82,7 +82,7 @@ namespace TechC
         /// </summary>
         private void SetupMenuView()
         {
-            pauseMenuView.OnButtonClicked += HandleMenuButton;
+            _pauseMenuView.OnButtonClicked += HandleMenuButton;
         }
 
         /// <summary>

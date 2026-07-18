@@ -3,7 +3,7 @@
 ## 名前空間のインポート
 （名前空間によって変わるため注意）
 ```csharp
-using ProjectName.Log;
+using TechC.Core.Log;
 ```
 
 ## 基本ログ
@@ -59,7 +59,7 @@ CusLog.Log("Player", $"プレイヤー位置: ({position.x:F2}, {position.y:F2},
 
 ```csharp
 using UnityEngine;
-using ProjectName.Log;
+using TechC.Core.Log;
 
 public class GameManager : MonoBehaviour
 {

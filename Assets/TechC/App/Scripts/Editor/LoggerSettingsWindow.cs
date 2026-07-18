@@ -10,14 +10,14 @@ namespace TechC.Editor
     /// </summary>
     public class LoggerSettingsWindow : EditorWindow
     {
-        private const int MIN_WINDOW_WIDTH = 400;
-        private const int MIN_WINDOW_HEIGHT = 300;
-        private const int COLOR_FIELD_WIDTH = 60;
-        private const int BUTTON_WIDTH = 60;
-        private const int DELETE_BUTTON_WIDTH = 30;
-        private const int SCROLL_VIEW_HEIGHT = 300;
-        private const int CATEGORY_NAME_WIDTH = 150;
-        private const int PREVIEW_WIDTH = 150;
+        private const int MinWindowWidth = 400;
+        private const int MinWindowHeight = 300;
+        private const int ColorFieldWidth = 60;
+        private const int ButtonWidth = 60;
+        private const int DeleteButtonWidth = 30;
+        private const int ScrollViewHeight = 300;
+        private const int CategoryNameWidth = 150;
+        private const int PreviewWidth = 150;
 
         private LoggerSettings _settings;
         private Vector2 _scrollPosition;
@@ -28,7 +28,7 @@ namespace TechC.Editor
         public static void ShowWindow()
         {
             var window = GetWindow<LoggerSettingsWindow>("CusLog Settings");
-            window.minSize = new Vector2(MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT);
+            window.minSize = new Vector2(MinWindowWidth, MinWindowHeight);
             window.Show();
         }
 
@@ -67,12 +67,12 @@ namespace TechC.Editor
             
             EditorGUILayout.BeginVertical(EditorStyles.helpBox);
             
-            bool currentDebugFlag = CusLog.isDebug;
+            bool currentDebugFlag = CusLog.IsDebug;
             bool newDebugFlag = EditorGUILayout.Toggle("Enable Debug Logs", currentDebugFlag);
             
             if (newDebugFlag != currentDebugFlag)
             {
-                CusLog.isDebug = newDebugFlag;
+                CusLog.IsDebug = newDebugFlag;
                 EditorUtility.SetDirty(_settings);
             }
 
@@ -113,10 +113,10 @@ namespace TechC.Editor
             EditorGUILayout.BeginHorizontal();
             
             _newCategoryName = EditorGUILayout.TextField("Category Name", _newCategoryName);
-            _newCategoryColor = EditorGUILayout.ColorField(GUIContent.none, _newCategoryColor, false, false, false, GUILayout.Width(COLOR_FIELD_WIDTH));
+            _newCategoryColor = EditorGUILayout.ColorField(GUIContent.none, _newCategoryColor, false, false, false, GUILayout.Width(ColorFieldWidth));
             
             EditorGUI.BeginDisabledGroup(string.IsNullOrWhiteSpace(_newCategoryName));
-            if (GUILayout.Button("Add", GUILayout.Width(BUTTON_WIDTH)))
+            if (GUILayout.Button("Add", GUILayout.Width(ButtonWidth)))
             {
                 _settings.AddCategory(_newCategoryName.Trim(), _newCategoryColor);
                 EditorUtility.SetDirty(_settings);
@@ -140,7 +140,7 @@ namespace TechC.Editor
             
             if (_settings.Categories.Count == 0) return;
 
-            _scrollPosition = EditorGUILayout.BeginScrollView(_scrollPosition, GUILayout.Height(SCROLL_VIEW_HEIGHT));
+            _scrollPosition = EditorGUILayout.BeginScrollView(_scrollPosition, GUILayout.Height(ScrollViewHeight));
             
             List<LogCategory> categoriesToRemove = new List<LogCategory>();
             
@@ -149,28 +149,28 @@ namespace TechC.Editor
                 EditorGUILayout.BeginHorizontal(EditorStyles.helpBox);
                 
                 // カテゴリ名
-                EditorGUILayout.LabelField(category.categoryName, GUILayout.Width(CATEGORY_NAME_WIDTH));
+                EditorGUILayout.LabelField(category.CategoryName, GUILayout.Width(CategoryNameWidth));
                 
                 // プレビュー
                 GUIStyle previewStyle = new GUIStyle(EditorStyles.label);
-                previewStyle.normal.textColor = category.color;
-                EditorGUILayout.LabelField($"[{category.categoryName}] Sample", previewStyle, GUILayout.Width(PREVIEW_WIDTH));
+                previewStyle.normal.textColor = category.Color;
+                EditorGUILayout.LabelField($"[{category.CategoryName}] Sample", previewStyle, GUILayout.Width(PreviewWidth));
                 
                 // 色変更
-                Color newColor = EditorGUILayout.ColorField(GUIContent.none, category.color, false, false, false, GUILayout.Width(COLOR_FIELD_WIDTH));
-                if (newColor != category.color)
+                Color newColor = EditorGUILayout.ColorField(GUIContent.none, category.Color, false, false, false, GUILayout.Width(ColorFieldWidth));
+                if (newColor != category.Color)
                 {
-                    category.color = newColor;
+                    category.Color = newColor;
                     EditorUtility.SetDirty(_settings);
                 }
                 
                 GUILayout.FlexibleSpace();
                 
                 // 削除ボタン
-                if (GUILayout.Button("×", GUILayout.Width(DELETE_BUTTON_WIDTH)))
+                if (GUILayout.Button("×", GUILayout.Width(DeleteButtonWidth)))
                 {
                     if (EditorUtility.DisplayDialog("確認", 
-                        $"カテゴリ '{category.categoryName}' を削除しますか?", 
+                        $"カテゴリ '{category.CategoryName}' を削除しますか?", 
                         "削除", "キャンセル"))
                     {
                         categoriesToRemove.Add(category);
@@ -183,7 +183,7 @@ namespace TechC.Editor
             // 削除処理
             foreach (var category in categoriesToRemove)
             {
-                _settings.RemoveCategory(category.categoryName);
+                _settings.RemoveCategory(category.CategoryName);
                 EditorUtility.SetDirty(_settings);
             }
             
